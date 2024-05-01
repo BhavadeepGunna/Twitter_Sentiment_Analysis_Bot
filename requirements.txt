@@ -6,3 +6,4 @@ tweety-ns
 openai
 streamlit
 tweepy
+langchain_openai
