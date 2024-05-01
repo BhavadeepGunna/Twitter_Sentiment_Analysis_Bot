@@ -1,0 +1,8 @@
+langchain
+numpy
+pandas
+plotly
+tweety-ns
+openai
+streamlit
+tweepy
