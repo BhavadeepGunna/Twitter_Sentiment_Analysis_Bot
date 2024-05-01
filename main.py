@@ -9,8 +9,7 @@ from tweety import Twitter
 
 from sentiment_analyzer import analyze_sentiment, create_dataframe_from_tweets
 
-twitter_client = Twitter('session')
-twitter_client.sign_in(username="GBhavadeep29213",password="Bhava@010272")
+
 
 
 
@@ -21,7 +20,9 @@ st.set_page_config(
     #page_icon="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4c8.png",
 )
 
-def on_add_tweets():
+def on_add_tweets(username,password):
+    twitter_client = Twitter('session')
+    twitter_client.sign_in(username,password)
     topic=st.session_state.topic
     all_tweets= twitter_client.search(keyword=topic,pages=40)
     if len(all_tweets)==0:
@@ -83,7 +84,7 @@ with col1:
         st.text_input(
             "topic", value="", key="topic", placeholder="give the topic"
         )
-        submit = st.form_submit_button(label="Add Tweets", on_click=on_add_tweets)
+        submit = st.form_submit_button(label="Add Tweets", on_click=on_add_tweets(username,password))
     if st.session_state.topic:
         st.subheader("Topic", anchor=False)
         name=st.session_state.topic
